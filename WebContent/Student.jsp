@@ -14,13 +14,14 @@
 
 	</div>  <!-- end div header_bar -->
 	
-	
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 		<div id="contentArea">
 		
 			<h1>Student Information Page</h1>
 		
 
-
+		<h4>Username: ${st.username}</h4>
+		<h4>Student ID: ${st.studentId}</h4>
 		<table border="1">
 			<tr>
 				<th>fullName</th>
@@ -28,6 +29,9 @@
 				<th>city</th>
 				<th>state</th>
 				<th>zip</th>
+				<th>telephone</th>
+				<th>email</th>
+				<th>dateOfSurvey</th>
 			</tr>
 			<tr>
 				<td>${st.fullName}</td>
@@ -35,6 +39,33 @@
 				<td>${st.city}</td>
 				<td>${st.state}</td>
 				<td>${st.zip}</td>
+				<td>${st.telephoneNumber}</td>
+				<td>${st.email}</td>
+				<td>${st.dataOfSurvey}</td>
+			</tr>
+		</table>
+		
+		<br/>
+		
+		<table border="1">
+			<tr>
+				<th>likedAboutCampus</th>
+				<th>Interests</th>
+				<th>likelyhoodOfRecommendation</th>
+				<th>raffle</th>
+				<th>comments</th>
+			</tr>
+			<tr>
+				<td>
+				<c:forEach var="option" items="${st.likedAboutCampus}" >
+  					${option}
+				</c:forEach>
+				
+				</td>
+				<td>${st.originOfInterest}</td>
+				<td>${st.likelyhoodOfRecommendation}</td>
+				<td>${st.raffle}</td>
+				<td>${st.comments}</td>
 			</tr>
 		</table>
 
