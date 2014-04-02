@@ -67,6 +67,16 @@ public class StudentDAO {
 		return students;
 	}
 	
+	public static List<String> gatherIDs() {
+		List<StudentBean> students = readIn();
+		List<String> temp = new ArrayList<String>();
+		if (students.size() > 0) {
+		for (int i = 0; i < students.size(); i++) {
+			temp.add(students.get(i).getStudentId());
+		}
+		}
+		return temp;
+	}
 	
 	/**
 	 * This method is used to write the passed in text

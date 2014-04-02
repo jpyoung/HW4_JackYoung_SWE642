@@ -88,6 +88,11 @@ public class Driver extends HttpServlet {
 		//Calculating the Mean and STDV and setting the databean
 		dataBean = DataProcessor.computeMetrics(studentBean.getRaffle());
 		
+		
+		//allTakenSurveys = StudentDAO.readIn();
+		
+		List<String> allIDS = StudentDAO.gatherIDs();
+		
 		String address;
 		if (dataBean.getMean() >= 90) {
 			address = WINNER_JSP;
@@ -100,7 +105,8 @@ public class Driver extends HttpServlet {
 		request.setAttribute("name", full_name);
 		request.setAttribute("compMean", dataBean.getMean());
 		request.setAttribute("compStdv", dataBean.getStdv());
-		
+		//request.setAttribute("ats",	allTakenSurveys);
+		request.setAttribute("idList", allIDS);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
 		dispatcher.forward(request, response);
