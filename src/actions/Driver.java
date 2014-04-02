@@ -147,15 +147,17 @@ public class Driver extends HttpServlet {
 		dispatcher.forward(request, response);
 		
 		} else {
-			System.out.println("The Else Statement was called");
+			String address;
 			
 			
 			StudentBean selectedStudent = findStudent(request.getParameter("uid"));
 			
 			if (selectedStudent == null) {
 				System.out.println("go to the error student page");
+				address = NOSUCHSTUDENT_JSP;
 			} else {
 				request.setAttribute("st", selectedStudent);
+				address = STUDENT_JSP;
 			}
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(STUDENT_JSP);

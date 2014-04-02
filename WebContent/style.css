@@ -62,7 +62,7 @@ li {
 }
 
 .full {
-	width: 377px;
+	width: 300px;
 }
 
 .tField {
@@ -138,3 +138,18 @@ h1 {
 		width: 100%;
 		overflow: auto;
 	}
+
+	/*Changing the default contentArea margin-left field*/
+#contentArea {
+	margin-left: 100px;
+	width: 800px;
+	padding-top: 20px;
+}
+
+#formTable td {
+	padding-left: 5px;
+}
+
+#formTable #f-submit {
+	margin-left: 80px;
+}

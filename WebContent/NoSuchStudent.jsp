@@ -10,16 +10,11 @@
 <body>
 	<div id="header_bar">
 		<div id="logo_top_bar">Department of Computer Science</div>
-<!-- 		<div id="upperRight" class="upperRight">
-			<p> Welcome No Name</p>
-			<p> Reset</p>
-		</div> -->
 	</div>  <!-- end div header_bar -->
-	
 	
 		<div id="contentArea">
 			<h1>No Such student found JSP page</h1>
-			<a href="index.jsp"></a>
+			<a href="index.jsp">Return to the Survey Page.</a>
 		</div>  <!-- end div b_container -->
 	
 

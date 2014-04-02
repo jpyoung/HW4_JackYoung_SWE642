@@ -32,32 +32,6 @@ $( document ).tooltip({
 <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
 defaultSettings();
-
-console.log("outer most outside click called");
-
-/* $(function() {
-	console.log("outside click called");
-	$("#inject").click(function(){
-		
-		console.log("wow");
- 		$("#username").val("jpy");
- 				$("#fullName").val("Jack Young");
-		$("#streetAddress").val("5209 Rosalie");
-		$("#zip").val("20120");
-		$("#state").val("VA");
-		$("#city").val("Centreville");
-		$("#telephoneNumber").val("572-234-3434");
-		$("#email").val("j@gmail.com");
-		$("#url").val("http://google.com");
-		$("#surveyDate").val("04-01-2014");
-		$("#GraduationYear").val("2014");
-		$("#studentID").val("32423");
-		$("#Data").val("1,2,3,4,5,6,7,8,9,10");
-		$("#comments").val("Great work"); */
-		
-/* 	});
-  }); */
-  
   
   function yolo() {
 		$("#username").val("jpy");
@@ -101,12 +75,8 @@ console.log("outer most outside click called");
 
 <style>
 
-/*Changing the default contentArea margin-left field*/
-#contentArea {
-	margin-left: 100px;
-	width: 800px;
-	padding-top: 20px;
-}
+
+
 </style>
 
 	<div id="contentArea">
@@ -126,7 +96,7 @@ console.log("outer most outside click called");
 		
 			
 
-		<table border="0">
+		<table id="formTable" border="0">
 			<tr>
 				<td>
 					<label>User Name:</label><br/>
@@ -144,15 +114,15 @@ console.log("outer most outside click called");
 			<tr>
 				<td>
 					<label>Zip:</label><br/>
-					<input class="medium tField" id="zip" name="zip" type="text" value="" placeholder="20120"/>
+					<input class="full tField" id="zip" name="zip" type="text" value="" placeholder="20120"/>
 				</td>
 				<td>
 					<label>State:</label><br/>
-					<input class="medium tField" id="state" name="state" type="text" value="" placeholder="VA"/>
+					<input class="full tField" id="state" name="state" type="text" value="" placeholder="VA"/>
 				</td>
 				<td>
 					<label>City:</label><br/>
-					<input class="medium tField" id="city" name="city" type="text" value=""/>
+					<input class="full tField" id="city" name="city" type="text" value=""/>
 				</td>
 			</tr>
 			<tr>
@@ -194,7 +164,7 @@ console.log("outer most outside click called");
 				<tr>
 					<td>
 						<label>Graduation Month:</label><br/>
-						<input class="medium tField" type="text" id="gradMonth" list="months" placeholder="May" required/>
+						<input class="full tField" type="text" id="gradMonth" list="months" placeholder="May" required/>
 						<datalist id="months">
 							<option value="January">
 							<option value="February">
@@ -212,7 +182,7 @@ console.log("outer most outside click called");
 					</td>
 					<td>
 						<label>Graduation Year:</label><br/>
-						<input class="medium tField" id="GraduationYear" name="GraduationYear" type="text" value="" placeholder="2014" required/>
+						<input class="full tField" id="GraduationYear" name="GraduationYear" type="text" value="" placeholder="2014" required/>
 					</td>
 					<td>
 						<label>Likelihood you would recommend this school to a friend?</label><br/>
@@ -225,7 +195,7 @@ console.log("outer most outside click called");
 				</tr>
 				<tr>
 					<td>
-						<label>Enter 10 numbers (ranging from 1 to 100) separated by a comma.</label>
+						<label>Enter 10 numbers separated by a comma.</label>
 						<p id="data_error_field">Error Place</p>
 						<input class="full tField" id="Data" name="Data" type="text" value="" placeholder="1,50, ..." required/>
 					</td>
