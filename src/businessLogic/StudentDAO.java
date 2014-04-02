@@ -31,7 +31,9 @@ public class StudentDAO {
 
 	
 	
-	public static String FILENAME = "/Users/JackYoung/Desktop/HW4_JackYoung_SWE642/WebContent/SurveyData_JackYoung.txt";
+	//public static String FILENAME = "/Users/JackYoung/Desktop/HW4_JackYoung_SWE642/WebContent/SurveyData_JackYoung.txt";
+	
+	public static String FILENAME;
 	
 	
 	/**

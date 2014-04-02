@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.tomcat.jni.File;
+
 import businessLogic.DataProcessor;
 import businessLogic.StudentDAO;
 import model.DataBean;
@@ -37,8 +39,22 @@ public class Driver extends HttpServlet {
 	private List<StudentBean> allTakenSurveys;
 	
  
-	//private ServletContext servletContext;
+	private ServletContext servletContext;
 
+
+	/**
+	 * @return the servletContext
+	 */
+	public ServletContext getServletContext() {
+		return servletContext;
+	}
+
+	/**
+	 * @param servletContext the servletContext to set
+	 */
+	public void setServletContext(ServletContext servletContext) {
+		this.servletContext = servletContext;
+	}
 
 	/**
      * @see HttpServlet#HttpServlet()
@@ -48,6 +64,14 @@ public class Driver extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+	/**
+	 * Method is used to lookup a StudentBean by an id.
+	 * If it finds a student, it returns that student to the caller.
+	 * If it does not find a matching id, then it returns null. 
+	 * 
+	 * @param id
+	 * @return StudentBean
+	 */
 	public StudentBean findStudent(String id) {
 		if (id != null) {
 			if (getAllTakenSurveys().size() > 0) {
@@ -77,7 +101,12 @@ public class Driver extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//System.out.println("Found File at: " + servletContext.getRealPath("SurveyData_JackYoung.txt"));
+//		System.out.println("Found File at: " + servletContext.getRealPath("SurveyData_JackYoung.txt"));
+		
+		System.out.println("File Location: " + request.getServletContext().getRealPath("SurveyData_JackYoung.txt"));
+	
+		StudentDAO.FILENAME = request.getServletContext().getRealPath("SurveyData_JackYoung.txt");
+		
 		
 		System.out.println("The Servlet Driver Class was called");
 		
