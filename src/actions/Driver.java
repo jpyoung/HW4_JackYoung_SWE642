@@ -48,6 +48,29 @@ public class Driver extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
+	public StudentBean findStudent(String id) {
+		if (id != null) {
+			if (getAllTakenSurveys().size() > 0) {
+				int index = -1;
+				for (int i = 0; i < allTakenSurveys.size(); i++) {
+					if (allTakenSurveys.get(i).getStudentId().equalsIgnoreCase(id)) {
+						index = i;
+					}
+				}
+				if (index > -1) {
+					return allTakenSurveys.get(index);
+				} else {
+					System.out.println("Error, did not find a matching record corresponding to the studentID");
+					return null;
+				}
+			} else {
+				System.out.println("AllTakenSurveys is null: " + getAllTakenSurveys().size());
+				return null;
+			}
+		} else {
+			return null;
+		}
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -59,6 +82,11 @@ public class Driver extends HttpServlet {
 		System.out.println("The Servlet Driver Class was called");
 		
 		System.out.println("UID = " + request.getParameter("uid"));
+		
+		allTakenSurveys = StudentDAO.readIn();
+		
+		System.out.println("All the Taken Surveys: " + allTakenSurveys);
+		
 		
 		if (request.getParameter("uid") == null) {
 		
@@ -117,6 +145,16 @@ public class Driver extends HttpServlet {
 		
 		} else {
 			System.out.println("The Else Statement was called");
+			
+			
+			StudentBean selectedStudent = findStudent(request.getParameter("uid"));
+			
+			if (selectedStudent == null) {
+				System.out.println("go to the error student page");
+			} else {
+				request.setAttribute("st", selectedStudent);
+			}
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(STUDENT_JSP);
 			dispatcher.forward(request, response);
 		}

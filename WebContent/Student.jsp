@@ -11,10 +11,7 @@
 
 	<div id="header_bar">
 		<div id="logo_top_bar">Department of Computer Science</div>
-<!-- 		<div id="upperRight" class="upperRight">
-			<p> Welcome No Name</p>
-			<p> Reset</p>
-		</div> -->
+
 	</div>  <!-- end div header_bar -->
 	
 	
@@ -22,16 +19,26 @@
 		
 			<h1>Student Information Page</h1>
 		
-<%-- 			<jsp:useBean id="studentDetailView" type="java.util.ArrayList" scope="session" />
-			<table></table>
-				<% for(int i = 0; i < studentDetailView.size(); i+=1) { %>
-					<tr>
-						<td></td>
-					</tr>
-				<% } %>
-			</table> --%>
-		
-			<a href="index.jsp"></a>
+
+
+		<table border="1">
+			<tr>
+				<th>fullName</th>
+				<th>street address</th>
+				<th>city</th>
+				<th>state</th>
+				<th>zip</th>
+			</tr>
+			<tr>
+				<td>${st.fullName}</td>
+				<td>${st.streetAddress}</td>
+				<td>${st.city}</td>
+				<td>${st.state}</td>
+				<td>${st.zip}</td>
+			</tr>
+		</table>
+
+		<a href="index.jsp"></a>
 		</div>  <!-- end div contentArea -->
 	
 	

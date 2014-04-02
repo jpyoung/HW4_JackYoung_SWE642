@@ -14,20 +14,15 @@
 	</div>  <!-- end div header_bar -->
 	
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 	<div id="wrapper">
 		<div id="leftPanel">
 			<h4>All StudentIDs</h4>
-			<ul>
-			
-			<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-			
- 				
+			<ul>	
 <c:forEach var="option" items="${idList}" >
   <li><a href="Driver?uid=${option}"><c:out value="${option}"/></a></li>
 </c:forEach>
-				
-				<li>Jack Young</li>
-				<li>Ryan Andrew</li>
 			</ul>
 		</div>
 		
