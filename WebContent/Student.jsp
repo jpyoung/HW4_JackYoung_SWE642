@@ -69,10 +69,11 @@
 			</tr>
 		</table>
 
-		<a href="index.jsp"></a>
+	<br/>
+
+		<a href="index.jsp">Return to Survey Form.</a>
 		</div>  <!-- end div contentArea -->
-	
-	
+
 
 	<div class="footer">
 		<span class="creatorName">Site Created By: <b>Jack Young</b></span>

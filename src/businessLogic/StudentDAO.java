@@ -163,6 +163,9 @@ public class StudentDAO {
 	 * @return String array
 	 */
 	private static String[] convertStringToArray(String n) {
+		if(n == null || n.length() == 0) {
+			return new String[]{"N/A"};
+		} 
 		String[] p = n.split(",");
 		return p;
 	}

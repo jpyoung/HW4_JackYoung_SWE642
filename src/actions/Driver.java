@@ -99,6 +99,9 @@ public class Driver extends HttpServlet {
 		 String email = request.getParameter("email");
 		 String dataOfSurvey = request.getParameter("surveyDate");
 		 String[] likedAboutCampus = request.getParameterValues("likeMost");
+		 if (likedAboutCampus == null) {
+			 likedAboutCampus = new String[]{"n/a"};
+		 }
 		 String originOfInterest = request.getParameter("interestHow");
 		 String likelyhoodOfRecommendation = request.getParameter("recommendToFriend");
 		 String raffle = request.getParameter("Data");

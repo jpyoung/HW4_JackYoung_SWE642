@@ -11,3 +11,4 @@
 {Jack Young Patrick}{5209 Rosalie}{Centreville}{VA}{20120}{572-234-3434}{j@gmail.com}{04-01-2014}{location,campus,atmospher,}{Television}{VeryLikely}{1,2,3,4,5,6,7,8,9,10}{Great work}{jpy}{19900603}
 {Jack Young}{5209 Rosalie}{Centreville}{VA}{20120}{572-234-3434}{j@gmail.com}{04-01-2014}{campus,}{Television}{VeryLikely}{1,2,3,4,5,6,7,8,9,10}{Great work}{jpy}{10000}
 {Jack Young}{5209 Rosalie}{Centreville}{VA}{20120}{572-234-3434}{j@gmail.com}{04-01-2014}{location,dorms,}{Internet}{VeryLikely}{1,2,3,4,5,6,7,8,9,10}{Great work}{jpy}{12}
+{Jack Young}{5209 Rosalie}{Centreville}{VA}{20120}{572-234-3434}{j@gmail.com}{04-01-2014}{n/a,}{null}{VeryLikely}{1,2,3,4,5,6,7,8,9,10}{Great work}{jpy}{32423}
