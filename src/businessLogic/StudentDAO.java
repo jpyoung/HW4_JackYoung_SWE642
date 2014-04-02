@@ -27,8 +27,13 @@ import model.StudentBean;
  */
 public class StudentDAO {
 
-	public static String FILENAME = "/Users/youngbuck14188/Documents/workspace_kep/Assignment4_jyoung17_swe642/WebContent/SurveyData_JackYoung.txt";
+//	public static String FILENAME = "/Users/youngbuck14188/Documents/workspace_kep/Assignment4_jyoung17_swe642/WebContent/SurveyData_JackYoung.txt";
 
+	
+	
+	public static String FILENAME = "/Users/JackYoung/Desktop/HW4_JackYoung_SWE642/WebContent/SurveyData_JackYoung.txt";
+	
+	
 	/**
 	 * This method is used to write the student object
 	 * to the text file. 

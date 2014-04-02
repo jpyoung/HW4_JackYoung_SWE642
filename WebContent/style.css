@@ -113,3 +113,28 @@ h1 {
 #errorBox {
 	background-color: yellow;
 }
+
+
+	#leftPanel {
+		/*background-color: yellow;*/
+		width: 220px;
+		float: left;
+	}
+
+	#leftPanel h4 {
+		text-align: center;
+	}
+
+	#contentArea2 {
+		/*background-color: green;*/
+		/*margin-left: 300px;*/
+		width: 800px;
+		padding-top: 20px;
+		float: left;
+	}
+
+	#wrapper {
+		/*background-color: orange;*/
+		width: 100%;
+		overflow: auto;
+	}

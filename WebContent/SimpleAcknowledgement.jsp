@@ -10,14 +10,20 @@
 <body>
 	<div id="header_bar">
 		<div id="logo_top_bar">Department of Computer Science</div>
-<!-- 		<div id="upperRight" class="upperRight">
-			<p> Welcome No Name</p>
-			<p> Reset</p>
-		</div> -->
+
 	</div>  <!-- end div header_bar -->
 	
-	
-		<div id="contentArea">
+
+	<div id="wrapper">
+		<div id="leftPanel">
+			<h4>All StudentIDs</h4>
+			<ul>
+				<li>Jack Young</li>
+				<li>Ryan Andrew</li>
+			</ul>
+		</div>
+		
+		<div id="contentArea2">
 		<div id="b_container">
 			
 		<div class="message">
@@ -42,11 +48,12 @@
 			</fieldset>
 		</div>
 
-		
-			<a href="index.jsp"></a>
-		
-		</div>  <!-- end div b_container -->
-	
+			
+				<a href="index.jsp"></a>
+			
+			</div>  <!-- end div b_container -->
+		</div>  <!-- end div contentArea2 -->
+</div> <!-- end div wrapper -->	
 
 	<div class="footer">
 		<span class="creatorName">Site Created By: <b>Jack Young</b></span>
