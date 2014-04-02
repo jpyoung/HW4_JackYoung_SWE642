@@ -24,8 +24,8 @@ function showResponseText(request, zip) {
 		//alert(request.responseText);
 		var r = extractInfo(request.responseText, zip);
 		if(r[0]) {
-			document.getElementById("json_city").innerHTML = r[1];
-			document.getElementById("json_state").innerHTML = r[2];
+			document.getElementById("city").value = r[1];
+			document.getElementById("state").value = r[2];
 			document.getElementById("zip_error_field").innerHTML = ""; //clear zip error field
 		} else {
 			//alert("Error, did not find corresponding info with the provide Zip code.");

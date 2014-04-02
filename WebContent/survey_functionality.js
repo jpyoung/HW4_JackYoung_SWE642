@@ -22,7 +22,7 @@ function defaultSettings() {
 	//register reset form action handler. 
 	registerResetFormHandler();
 	
-	//registerZipHandler();
+	registerZipHandler();
 	
 }
 

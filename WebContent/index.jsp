@@ -27,7 +27,7 @@ $( document ).tooltip({
 
 	
 <link rel="stylesheet" href="style.css"/>
-<!-- <script src="HW3/zipJson.js"></script> -->
+<script src="zipJson.js"></script>
 <script src="survey_functionality.js"></script>
 <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
@@ -65,10 +65,6 @@ defaultSettings();
 
 	<div id="header_bar">
 		<div id="logo_top_bar">Department of Computer Science</div>
-<!-- 		<div id="upperRight" class="upperRight">
-			<p> Welcome No Name</p>
-			<p> Reset</p>
-		</div> -->
 	</div>  <!-- end div header_bar -->
 	
 
@@ -115,6 +111,7 @@ defaultSettings();
 				<td>
 					<label>Zip:</label><br/>
 					<input class="full tField" id="zip" name="zip" type="text" value="" placeholder="20120"/>
+					<span style="margin-left: 20px; color: red;" id="zip_error_field"></span>
 				</td>
 				<td>
 					<label>State:</label><br/>
