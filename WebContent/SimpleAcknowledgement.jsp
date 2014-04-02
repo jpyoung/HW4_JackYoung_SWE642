@@ -23,7 +23,7 @@
 			
  				
 <c:forEach var="option" items="${idList}" >
-  <li><c:out value="${option}"/></li>
+  <li><a href="Driver?uid=${option}"><c:out value="${option}"/></a></li>
 </c:forEach>
 				
 				<li>Jack Young</li>

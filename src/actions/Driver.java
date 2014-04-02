@@ -58,6 +58,10 @@ public class Driver extends HttpServlet {
 		
 		System.out.println("The Servlet Driver Class was called");
 		
+		System.out.println("UID = " + request.getParameter("uid"));
+		
+		if (request.getParameter("uid") == null) {
+		
 		 String full_name = request.getParameter("fullName");
 		 String streetAddress = request.getParameter("streetAddress");
 		 String city = request.getParameter("city");
@@ -110,6 +114,12 @@ public class Driver extends HttpServlet {
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
 		dispatcher.forward(request, response);
+		
+		} else {
+			System.out.println("The Else Statement was called");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(STUDENT_JSP);
+			dispatcher.forward(request, response);
+		}
 		
 	}
 

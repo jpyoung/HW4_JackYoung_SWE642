@@ -22,14 +22,14 @@
 		
 			<h1>Student Information Page</h1>
 		
-			<jsp:useBean id="studentDetailView" type="java.util.ArrayList" scope="session" />
+<%-- 			<jsp:useBean id="studentDetailView" type="java.util.ArrayList" scope="session" />
 			<table></table>
 				<% for(int i = 0; i < studentDetailView.size(); i+=1) { %>
 					<tr>
 						<td></td>
 					</tr>
 				<% } %>
-			</table>
+			</table> --%>
 		
 			<a href="index.jsp"></a>
 		</div>  <!-- end div contentArea -->
