@@ -11,13 +11,22 @@
 
 	<div id="header_bar">
 		<div id="logo_top_bar">Department of Computer Science</div>
-<!-- 		<div id="upperRight" class="upperRight">
-			<p> Welcome No Name</p>
-			<p> Reset</p>
-		</div> -->
+
 	</div>  <!-- end div header_bar -->
 	
-	<div id="contentArea">
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+	<div id="wrapper">
+		<div id="leftPanel">
+			<h4>All StudentIDs</h4>
+			<ul>	
+<c:forEach var="option" items="${idList}" >
+  <li><a href="Driver?uid=${option}"><c:out value="${option}"/></a></li>
+</c:forEach>
+			</ul>
+		</div>
+	
+	<div id="contentArea2">
 
 		<div id="b_container">
 			
@@ -48,9 +57,9 @@
 		
 			<a href="index.jsp"></a>
 		
-		</div>  <!-- end div b_container -->
-
-	</div>  <!-- end div contentArea -->
+			</div>  <!-- end div b_container -->
+		</div>  <!-- end div contentArea2 -->
+</div> <!-- end div wrapper -->	
 	
 	<div class="footer">
 		<span class="creatorName">Site Created By: <b>Jack Young</b></span>
