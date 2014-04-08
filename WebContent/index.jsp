@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
-<!-- <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script> -->
+ <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script> 
 <link rel="stylesheet" href="assets/jquery-ui-1.10.4/themes/base/jquery.ui.all.css">
 <script src="assets/jquery-ui-1.10.4/jquery-1.10.2.js"></script>
 <script src="assets/jquery-ui-1.10.4/ui/jquery.ui.core.js"></script>
@@ -25,11 +25,11 @@ $( document ).tooltip({
 
 
 
-	
+<!-- <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>	 -->
 <link rel="stylesheet" href="style.css"/>
 <script src="zipJson.js"></script>
 <script src="survey_functionality.js"></script>
-<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
+
 <script type="text/javascript">
 	defaultSettings();
 </script>
@@ -55,9 +55,66 @@ $( document ).tooltip({
 		<p>We ask that all prospective students provide feedback about their campus visit<p>
 
 
+<!-- //http://localhost:8080/AS4_JackYoung_SWE642/Driver?
+ -->
+
+<script>
+
+$(function() {
+	
+	$("#f-submit").click(function(){
+		var usn = $("#username").val();
+		var fn = $("#fullName").val();
+		var sa = $("#streetAddress").val();
+		var z = $("#zip").val();
+		var st = $("#state").val();
+		var c = $("#city").val();
+		var t = $("#telephoneNumber").val();
+		var em = $("#email").val();
+		var ur = $("#url").val();
+		var sd = $("#surveyDate").val();
+		var gy = $("#GraduationYear").val();
+		var sti = $("#studentID").val();
+		var dat = $("#Data").val();
+		var cm = $("#comments").val();
+		var rtf = $("#recommendToFriend").val();
 		
+	var dataString = 'username=' + usn + '&fullName=' + fn + '&streetAddress=' + sa + '&zip=' + z + '&state=' + st + '&city=' + c;
+		dataString += '&telephoneNumber=' + t + '&email=' + em + '&url=' + ur + '&surveyDate=' + sd + '&GraduationYear=' + gy;
+		dataString += '&recommendToFriend=' + rtf + '&Data=' + dat + '&studentID=' + sti + '&comments=' + cm;
+		
+		/* alert(dataString); */
+		
+		/* 		&recommendToFriend=VeryLikely&Data=&studentID=&comments=
+		 */
+ 		
+		 //$.post('http://localhost:8080/AS4_JackYoung_SWE642/Driver?' + dataString);
+		
+		if (formValidation()) {
+		
+		window.location = 'http://localhost:8080/AS4_JackYoung_SWE642/Driver?' + dataString;
+		
+		}
+		
+/* 		 $.ajax({
+			   url: 'http://localhost:8080/AS4_JackYoung_SWE642/Driver?' + dataString,
+	           type:'POST',
+	           success : function(data1){     
+	        	   alert("Success Ajax function");
+			   }
+		});  */
+		
+		
+	});
+	
+	
+	
+});
+
+
+</script>		
 			
-		<form id="survey_form" action="Driver" autocomplete="on">
+		<!-- <form id="survey_form" action="Driver" autocomplete="on"> -->
 		
 			
 
@@ -190,7 +247,7 @@ $( document ).tooltip({
 		</table>
 		
 			
-		</form>
+		<!-- </form> -->
 	
 	</div>  <!-- end div contentArea -->
 		
