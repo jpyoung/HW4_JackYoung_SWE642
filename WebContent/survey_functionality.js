@@ -298,11 +298,13 @@ function formValidation() {
 	}
 
  // $(function() {
+	if (!go) {
     $( "#dialog-modal" ).dialog({
       height: 300,
       width: 600,
       modal: true
     });
+	}
   // });
 
     return go;
