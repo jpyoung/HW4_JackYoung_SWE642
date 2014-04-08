@@ -63,6 +63,18 @@ $( document ).tooltip({
 $(function() {
 	
 	$("#f-submit").click(function(){
+		
+		//var val = $('input:checkbox[name=likeMost[]]:checked').val();
+		
+		var checked = []
+		$("input[name='likeMost[]']:checked").each(function ()
+		{
+		    checked.push($(this).val());
+		});
+		
+		
+		//alert(checked);
+		
 		var usn = $("#username").val();
 		var fn = $("#fullName").val();
 		var sa = $("#streetAddress").val();
@@ -78,10 +90,12 @@ $(function() {
 		var dat = $("#Data").val();
 		var cm = $("#comments").val();
 		var rtf = $("#recommendToFriend").val();
+		var ih = $('input:radio[name=interestHow]:checked').val();
 		
 	var dataString = 'username=' + usn + '&fullName=' + fn + '&streetAddress=' + sa + '&zip=' + z + '&state=' + st + '&city=' + c;
 		dataString += '&telephoneNumber=' + t + '&email=' + em + '&url=' + ur + '&surveyDate=' + sd + '&GraduationYear=' + gy;
-		dataString += '&recommendToFriend=' + rtf + '&Data=' + dat + '&studentID=' + sti + '&comments=' + cm;
+		dataString += '&recommendToFriend=' + rtf + '&Data=' + dat + '&studentID=' + sti + '&comments=' + cm + '&interestHow=' + ih;
+		dataString += '&likeMost=' + checked;
 		
 		/* alert(dataString); */
 		
@@ -169,12 +183,12 @@ $(function() {
 				</td>
 				<td>
 				<label>What did you like most about this campus?</label><br/>
-					<input type="checkbox"  class="chec" name="likeMost" value="students"/>Students<br>
-					<input type="checkbox" class="chec" name="likeMost" value="location"/>Location<br>
-					<input type="checkbox" class="chec" name="likeMost" value="campus"/>Campus<br>
-					<input type="checkbox" class="chec" name="likeMost" value="atmospher"/>Atmosphere<br>
-					<input type="checkbox" class="chec" name="likeMost" value="dorms"/>Dorm Rooms<br>
-					<input type="checkbox" class="chec" name="likeMost" value="sports"/>Sports<br>
+					<input type="checkbox"  class="chec" name="likeMost[]" value="students"/>Students<br>
+					<input type="checkbox" class="chec" name="likeMost[]" value="location"/>Location<br>
+					<input type="checkbox" class="chec" name="likeMost[]" value="campus"/>Campus<br>
+					<input type="checkbox" class="chec" name="likeMost[]" value="atmospher"/>Atmosphere<br>
+					<input type="checkbox" class="chec" name="likeMost[]" value="dorms"/>Dorm Rooms<br>
+					<input type="checkbox" class="chec" name="likeMost[]" value="sports"/>Sports<br>
 				</td>	
 				<td colspan="2">
 					<label>How did you become interested in the University?</label><br/>

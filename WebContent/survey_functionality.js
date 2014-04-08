@@ -311,7 +311,7 @@ function formValidation() {
 // checkboxes are checked.  If so return true, else
 // return false.
 function checkBoxesCheck() {
-	var bb = document.getElementsByName("likeMost");
+	var bb = document.getElementsByName("likeMost[]");
 	var count = 0;
 	for (var y = 0; y < bb.length; y++) {
 		if (bb[y].checked) {
