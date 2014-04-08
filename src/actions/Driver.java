@@ -27,6 +27,7 @@ import model.StudentBean;
  */
 @WebServlet("/Driver")
 public class Driver extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
 	private static String WINNER_JSP = "WinnerAcknowledgement.jsp";
@@ -38,24 +39,8 @@ public class Driver extends HttpServlet {
 	private StudentBean studentBean;
 	private DataBean dataBean;
 	private List<StudentBean> allTakenSurveys;
-	
- 
 	private ServletContext servletContext;
 
-
-	/**
-	 * @return the servletContext
-	 */
-	public ServletContext getServletContext() {
-		return servletContext;
-	}
-
-	/**
-	 * @param servletContext the servletContext to set
-	 */
-	public void setServletContext(ServletContext servletContext) {
-		this.servletContext = servletContext;
-	}
 
 	/**
      * @see HttpServlet#HttpServlet()
@@ -97,6 +82,146 @@ public class Driver extends HttpServlet {
 		}
 	}
 	
+	
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	@SuppressWarnings("unused")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		System.out.println("[INFO] :=:  doGet() method called in the Driver Servlet Class. :=: UID=" + request.getParameter("uid"));
+		System.out.println("[Text File Location] :=: " + request.getServletContext().getRealPath("SurveyData_JackYoung.txt"));
+		
+		//looking up the relative location of the textfile.  
+		StudentDAO.FILENAME = request.getServletContext().getRealPath("SurveyData_JackYoung.txt");
+		
+		//reading in all data from text file
+		allTakenSurveys = StudentDAO.readIn();
+		
+		System.out.println("[Info] :=: All the Taken Surveys: " + allTakenSurveys);
+		
+		
+		if (request.getParameter("uid") == null && fieldsPopulated(request)) {
+
+			System.out.println("If Called");
+
+			String full_name = request.getParameter("fullName");
+			String streetAddress = request.getParameter("streetAddress");
+			String city = request.getParameter("city");
+			String state = request.getParameter("state");
+			String zip = request.getParameter("zip");
+			String telephoneNumber = request.getParameter("telephoneNumber");
+			String email = request.getParameter("email");
+			String dataOfSurvey = request.getParameter("surveyDate");
+			String[] likedAboutCampus = request.getParameterValues("likeMost");
+			if (likedAboutCampus == null) {
+				likedAboutCampus = new String[]{"n/a"};
+			}
+			String originOfInterest = request.getParameter("interestHow");
+			String likelyhoodOfRecommendation = request.getParameter("recommendToFriend");
+			String raffle = request.getParameter("Data");
+			String comments = request.getParameter("comments");
+			String username = request.getParameter("username");
+			String studentId = request.getParameter("studentID");
+
+
+			//where null is is where the likedAboutCampus will go
+			studentBean = new StudentBean(full_name, streetAddress, city, state,
+					zip, telephoneNumber, email, dataOfSurvey, likedAboutCampus,
+					originOfInterest, likelyhoodOfRecommendation, raffle, comments,
+					username, studentId);
+
+			System.out.println("[NEW SURVEY] :=: " + studentBean.toString());
+
+			//writing out the new student survey
+			StudentDAO.writeOut(studentBean);
+
+			//Calculating the Mean and STDV and setting the databean
+			dataBean = DataProcessor.computeMetrics(studentBean.getRaffle());
+
+			//gathering all the IDs of the students
+			List<String> allIDS = StudentDAO.gatherIDs();
+
+			String address;
+			if (dataBean.getMean() >= 90) {
+				address = WINNER_JSP;
+			} else {
+				address = SIMPLE_JSP;
+			}
+
+			//Data that will be displayed on the results page (i.e. SimpleAck or WinnerAckno
+			request.setAttribute("name", full_name);
+			request.setAttribute("compMean", dataBean.getMean());
+			request.setAttribute("compStdv", dataBean.getStdv());
+			request.setAttribute("idList", allIDS);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+			dispatcher.forward(request, response);
+
+		} else if (request.getParameter("uid") != null) {
+			//if (request.getParameter("uid") != null)
+			System.out.println("ELSE IF");
+
+			String address;
+
+			StudentBean selectedStudent = findStudent(request.getParameter("uid"));
+
+			if (selectedStudent == null) {
+				System.out.println("[ERROR] :=: Going to the error student page.");
+				address = NOSUCHSTUDENT_JSP;
+			} else {
+				request.setAttribute("st", selectedStudent);
+				address = STUDENT_JSP;
+			}
+			RequestDispatcher dispatcher = request.getRequestDispatcher(STUDENT_JSP);
+			dispatcher.forward(request, response);
+		}  else {
+			System.out.println("The else was called");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(SURVEY_JSP);
+			dispatcher.forward(request, response);
+		}
+
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+	}
+
+	
+	public List<StudentBean> getAllTakenSurveys() {
+		return allTakenSurveys;
+	}
+
+	public void setAllTakenSurveys(List<StudentBean> allTakenSurveys) {
+		this.allTakenSurveys = allTakenSurveys;
+	}
+	
+	/**
+	 * @return the servletContext
+	 */
+	public ServletContext getServletContext() {
+		return servletContext;
+	}
+
+	/**
+	 * @param servletContext the servletContext to set
+	 */
+	public void setServletContext(ServletContext servletContext) {
+		this.servletContext = servletContext;
+	}
+	
+	/**
+	 * This method is used to check if the passed in url contained the 
+	 * survey dataString.  It does a simple check for four of the required
+	 * fields.  If they are empty, then return false; else return true.
+	 * 
+	 * @param request
+	 * @return boolean
+	 */
+	@SuppressWarnings("unused")
 	public static boolean fieldsPopulated(HttpServletRequest request){
 		 String full_name = request.getParameter("fullName");
 		 String streetAddress = request.getParameter("streetAddress");
@@ -117,139 +242,10 @@ public class Driver extends HttpServlet {
 		 String username = request.getParameter("username");
 		 String studentId = request.getParameter("studentID");
 		 
-		 
-		 if (full_name.equals("") || streetAddress.equals("") || studentId.equals("")) {
+		 if (full_name.equals("") || streetAddress.equals("") || studentId.equals("") || email.equals("")) {
 			 return false;
 		 }
 		 return true;
-		 
-		 
 	}
-	
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-//		System.out.println("Found File at: " + servletContext.getRealPath("SurveyData_JackYoung.txt"));
-		
-		System.out.println("File Location: " + request.getServletContext().getRealPath("SurveyData_JackYoung.txt"));
-	
-		StudentDAO.FILENAME = request.getServletContext().getRealPath("SurveyData_JackYoung.txt");
-		
-		
-		System.out.println("The Servlet Driver Class was called");
-		
-		System.out.println("UID = " + request.getParameter("uid"));
-		
-		allTakenSurveys = StudentDAO.readIn();
-		
-		System.out.println("All the Taken Surveys: " + allTakenSurveys);
-		
-		
-		if (request.getParameter("uid") == null && fieldsPopulated(request)) {
-			
-			System.out.println("If Called");
-		
-		 String full_name = request.getParameter("fullName");
-		 String streetAddress = request.getParameter("streetAddress");
-		 String city = request.getParameter("city");
-		 String state = request.getParameter("state");
-		 String zip = request.getParameter("zip");
-		 String telephoneNumber = request.getParameter("telephoneNumber");
-		 String email = request.getParameter("email");
-		 String dataOfSurvey = request.getParameter("surveyDate");
-		 String[] likedAboutCampus = request.getParameterValues("likeMost");
-		 if (likedAboutCampus == null) {
-			 likedAboutCampus = new String[]{"n/a"};
-		 }
-		 String originOfInterest = request.getParameter("interestHow");
-		 String likelyhoodOfRecommendation = request.getParameter("recommendToFriend");
-		 String raffle = request.getParameter("Data");
-		 String comments = request.getParameter("comments");
-		 String username = request.getParameter("username");
-		 String studentId = request.getParameter("studentID");
-		
-		
-		 //where null is is where the likedAboutCampus will go
-		studentBean = new StudentBean(full_name, streetAddress, city, state,
-				zip, telephoneNumber, email, dataOfSurvey, likedAboutCampus,
-				originOfInterest, likelyhoodOfRecommendation, raffle, comments,
-				username, studentId);
-	
-		System.out.println(studentBean.toString());
-		
-		StudentDAO.writeOut(studentBean);
-		
-		//Calculating the Mean and STDV and setting the databean
-		dataBean = DataProcessor.computeMetrics(studentBean.getRaffle());
-		
-		
-		//allTakenSurveys = StudentDAO.readIn();
-		
-		List<String> allIDS = StudentDAO.gatherIDs();
-		
-		String address;
-		if (dataBean.getMean() >= 90) {
-			address = WINNER_JSP;
-		} else {
-			address = SIMPLE_JSP;
-		}
-		
-		
-		//Data that will be displayed on the results page (i.e. SimpleAck or WinnerAckno
-		request.setAttribute("name", full_name);
-		request.setAttribute("compMean", dataBean.getMean());
-		request.setAttribute("compStdv", dataBean.getStdv());
-		//request.setAttribute("ats",	allTakenSurveys);
-		request.setAttribute("idList", allIDS);
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-		dispatcher.forward(request, response);
-		
-		} else if (request.getParameter("uid") != null) {
-			//if (request.getParameter("uid") != null)
-			System.out.println("ELSE IF");
-			
-			String address;
-			
-			
-			StudentBean selectedStudent = findStudent(request.getParameter("uid"));
-			
-			if (selectedStudent == null) {
-				System.out.println("go to the error student page");
-				address = NOSUCHSTUDENT_JSP;
-			} else {
-				request.setAttribute("st", selectedStudent);
-				address = STUDENT_JSP;
-			}
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher(STUDENT_JSP);
-			dispatcher.forward(request, response);
-		}  else {
-			System.out.println("The else was called");
-			RequestDispatcher dispatcher = request.getRequestDispatcher(SURVEY_JSP);
-			dispatcher.forward(request, response);
-		}
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
-
-	
-	public List<StudentBean> getAllTakenSurveys() {
-		return allTakenSurveys;
-	}
-
-	public void setAllTakenSurveys(List<StudentBean> allTakenSurveys) {
-		this.allTakenSurveys = allTakenSurveys;
-	}
-	
 	
 }
