@@ -31,26 +31,7 @@ $( document ).tooltip({
 <script src="survey_functionality.js"></script>
 <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>
 <script type="text/javascript">
-defaultSettings();
-  
-  function yolo() {
-		$("#username").val("jpy");
-		$("#fullName").val("Jack Young");
-		$("#streetAddress").val("5209 Rosalie");
-		$("#zip").val("20120");
-		$("#state").val("VA");
-		$("#city").val("Centreville");
-		$("#telephoneNumber").val("572-234-3434");
-		$("#email").val("j@gmail.com");
-		$("#url").val("http://google.com");
-		$("#surveyDate").val("04-01-2014");
-		$("#GraduationYear").val("2014");
-		$("#studentID").val("32423");
-		$("#Data").val("1,2,3,4,5,6,7,8,9,10");
-		$("#comments").val("Great work");
-		$("#gradMonth").val("March");
-  }
-
+	defaultSettings();
 </script>
 
 
@@ -69,11 +50,6 @@ defaultSettings();
 	
 
 	<div id="contentArea">
-	
-	<div style="background-color: orange;">
-<button id="inject" onclick="yolo();">InjectInputs</button>
-</div>
-	
 		
 		<h1>CS Department Survey</h1>
 		<p>We ask that all prospective students provide feedback about their campus visit<p>
