@@ -35,7 +35,7 @@ defaultSettings();
   
   function yolo() {
 		$("#username").val("jpy");
-			$("#fullName").val("Jack Young");
+		$("#fullName").val("Jack Young");
 		$("#streetAddress").val("5209 Rosalie");
 		$("#zip").val("20120");
 		$("#state").val("VA");
@@ -67,13 +67,6 @@ defaultSettings();
 		<div id="logo_top_bar">Department of Computer Science</div>
 	</div>  <!-- end div header_bar -->
 	
-
-
-<style>
-
-
-
-</style>
 
 	<div id="contentArea">
 	
