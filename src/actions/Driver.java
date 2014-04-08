@@ -229,8 +229,8 @@ public class Driver extends HttpServlet {
 			dispatcher.forward(request, response);
 		}  else {
 			System.out.println("The else was called");
-//			RequestDispatcher dispatcher = request.getRequestDispatcher(SURVEY_JSP);
-//			dispatcher.forward(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(SURVEY_JSP);
+			dispatcher.forward(request, response);
 		}
 		
 	}

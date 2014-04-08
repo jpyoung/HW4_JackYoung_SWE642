@@ -255,6 +255,9 @@ function calculateMaximum(tokens) {
 
 
 function formValidation() {
+	
+	console.log("Form Validation Called");
+	
 	document.getElementById("errorBox").innerHTML = "";
 	var ERROR_MESSAGES = new Array();
 
@@ -381,6 +384,7 @@ function registerResetFormHandler() {
 }
 
 function registerFormValidationHandler() {
+	console.log("form validation handler registered");
 	var field = document.getElementById("f-submit");
 	field.onclick = formValidation;
 }
