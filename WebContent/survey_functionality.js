@@ -16,7 +16,7 @@ function defaultSettings() {
 	registerHandler();
 	
 	
-	//registerFormValidationHandler();
+	registerFormValidationHandler();
 	
 	
 	//register reset form action handler. 
@@ -380,9 +380,9 @@ function registerResetFormHandler() {
 	field.onclick = resetForm;
 }
 
-//function registerFormValidationHandler() {
-//	var field = document.getElementById("f-submit");
-//	field.onclick = formValidation;
-//}
+function registerFormValidationHandler() {
+	var field = document.getElementById("f-submit");
+	field.onclick = formValidation;
+}
 
 // START of Section for =  Form Validation Event Handling

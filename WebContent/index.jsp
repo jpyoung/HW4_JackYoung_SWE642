@@ -57,7 +57,7 @@ $( document ).tooltip({
 
 		
 			
-		<form id="survey_form" action="Driver" autocomplete="on" onsubmit="return formValidation();">
+		<form id="survey_form" action="Driver" autocomplete="on">
 		
 			
 
@@ -69,7 +69,7 @@ $( document ).tooltip({
 				</td>
 				<td>
 					<label>Full Name:</label><br/>
-					<input class="full tField" id="fullName" name="fullName" type="text" value="" required/>
+					<input class="full tField" id="fullName" name="fullName" type="text" value=""/>
 				</td>
 				<td>
 						<label>Street Address:</label><br/>
@@ -94,11 +94,11 @@ $( document ).tooltip({
 			<tr>
 				<td>
 					<label>Telephone #:</label><br/>
-					<input class="full tField" id="telephoneNumber" name="telephoneNumber" type="text" value="" placeholder="703-993-4622" required/>
+					<input class="full tField" id="telephoneNumber" name="telephoneNumber" type="text" value="" placeholder="703-993-4622"/>
 				</td>
 				<td>
 					<label>E-mail:</label><br/>
-					<input class="full tField" id="email" name="email" type="text" value="" placeholder="johnDoe@gmu.edu" required/>
+					<input class="full tField" id="email" name="email" type="text" value="" placeholder="johnDoe@gmu.edu"/>
 				</td>
 				<td>
 					<label>URL:</label><br/>
@@ -108,7 +108,7 @@ $( document ).tooltip({
 			<tr>
 				<td>
 					<label>Survey Date</label><br/>
-					<input class="full tField" id="surveyDate" name="surveyDate" type="text" value="" placeholder="02-05-2014" required/>
+					<input class="full tField" id="surveyDate" name="surveyDate" type="text" value="" placeholder="02-05-2014"/>
 				</td>
 				<td>
 				<label>What did you like most about this campus?</label><br/>
@@ -130,7 +130,7 @@ $( document ).tooltip({
 				<tr>
 					<td>
 						<label>Graduation Month:</label><br/>
-						<input class="full tField" type="text" id="gradMonth" list="months" placeholder="May" required/>
+						<input class="full tField" type="text" id="gradMonth" list="months" placeholder="May"/>
 						<datalist id="months">
 							<option value="January">
 							<option value="February">
@@ -148,7 +148,7 @@ $( document ).tooltip({
 					</td>
 					<td>
 						<label>Graduation Year:</label><br/>
-						<input class="full tField" id="GraduationYear" name="GraduationYear" type="text" value="" placeholder="2014" required/>
+						<input class="full tField" id="GraduationYear" name="GraduationYear" type="text" value="" placeholder="2014"/>
 					</td>
 					<td>
 						<label>Likelihood you would recommend this school to a friend?</label><br/>
@@ -163,7 +163,7 @@ $( document ).tooltip({
 					<td>
 						<label>Enter 10 numbers separated by a comma.</label>
 						<p id="data_error_field">Error Place</p>
-						<input class="full tField" id="Data" name="Data" type="text" value="" placeholder="1,50, ..." required/>
+						<input class="full tField" id="Data" name="Data" type="text" value="" placeholder="1,50, ..."/>
 					</td>
 					<td>
 						<label>Student Id:</label><br/>

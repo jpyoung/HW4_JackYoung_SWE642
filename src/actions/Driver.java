@@ -33,6 +33,7 @@ public class Driver extends HttpServlet {
 	private static String SIMPLE_JSP = "SimpleAcknowledgement.jsp";
 	private static String STUDENT_JSP = "Student.jsp";
 	private static String NOSUCHSTUDENT_JSP = "NoSuchStudent.jsp";
+	private static String SURVEY_JSP = "index.jsp";
 	
 	private StudentBean studentBean;
 	private DataBean dataBean;
@@ -95,6 +96,36 @@ public class Driver extends HttpServlet {
 			return null;
 		}
 	}
+	
+	public static boolean fieldsPopulated(HttpServletRequest request){
+		 String full_name = request.getParameter("fullName");
+		 String streetAddress = request.getParameter("streetAddress");
+		 String city = request.getParameter("city");
+		 String state = request.getParameter("state");
+		 String zip = request.getParameter("zip");
+		 String telephoneNumber = request.getParameter("telephoneNumber");
+		 String email = request.getParameter("email");
+		 String dataOfSurvey = request.getParameter("surveyDate");
+		 String[] likedAboutCampus = request.getParameterValues("likeMost");
+		 if (likedAboutCampus == null) {
+			 likedAboutCampus = new String[]{"n/a"};
+		 }
+		 String originOfInterest = request.getParameter("interestHow");
+		 String likelyhoodOfRecommendation = request.getParameter("recommendToFriend");
+		 String raffle = request.getParameter("Data");
+		 String comments = request.getParameter("comments");
+		 String username = request.getParameter("username");
+		 String studentId = request.getParameter("studentID");
+		 
+		 
+		 if (full_name.equals("") || streetAddress.equals("") || studentId.equals("")) {
+			 return false;
+		 }
+		 return true;
+		 
+		 
+	}
+	
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -117,7 +148,9 @@ public class Driver extends HttpServlet {
 		System.out.println("All the Taken Surveys: " + allTakenSurveys);
 		
 		
-		if (request.getParameter("uid") == null) {
+		if (request.getParameter("uid") == null && fieldsPopulated(request)) {
+			
+			System.out.println("If Called");
 		
 		 String full_name = request.getParameter("fullName");
 		 String streetAddress = request.getParameter("streetAddress");
@@ -175,7 +208,10 @@ public class Driver extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher(address);
 		dispatcher.forward(request, response);
 		
-		} else {
+		} else if (request.getParameter("uid") != null) {
+			//if (request.getParameter("uid") != null)
+			System.out.println("ELSE IF");
+			
 			String address;
 			
 			
@@ -191,6 +227,10 @@ public class Driver extends HttpServlet {
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(STUDENT_JSP);
 			dispatcher.forward(request, response);
+		}  else {
+			System.out.println("The else was called");
+//			RequestDispatcher dispatcher = request.getRequestDispatcher(SURVEY_JSP);
+//			dispatcher.forward(request, response);
 		}
 		
 	}
