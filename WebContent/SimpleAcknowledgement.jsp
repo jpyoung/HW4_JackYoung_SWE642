@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>SWE642 HW4</title>
+<title>Survey - Jack Young - 642</title>
 <link rel="stylesheet" href="style.css"/>
 </head>
 <body>

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Survey - Jack Young - 642</title>
 <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
@@ -65,6 +65,5 @@
 		<span class="creatorName">Site Created By: <b>Jack Young</b></span>
 		<a href="http://www.gmu.edu/" title="Please visit http://www.gmu.edu for more information. (Click on the logo to go there now.)"><img id="gmuLogo" width="200px" src="GMU_LOGO.jpg"/></a>
 	</div>
-
 </body>
 </html>
