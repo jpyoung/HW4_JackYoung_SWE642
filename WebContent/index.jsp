@@ -1,13 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-
+<title>Survey - Jack Young - 642</title>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
- <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script> 
+<script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script> 
 <link rel="stylesheet" href="assets/jquery-ui-1.10.4/themes/base/jquery.ui.all.css">
 <script src="assets/jquery-ui-1.10.4/jquery-1.10.2.js"></script>
 <script src="assets/jquery-ui-1.10.4/ui/jquery.ui.core.js"></script>
@@ -15,15 +13,12 @@
 <script src="assets/jquery-ui-1.10.4/ui/jquery.ui.position.js"></script>
 <script src="assets/jquery-ui-1.10.4/ui/jquery.ui.tooltip.js"></script>
 <script src="assets/jquery-ui-1.10.4/ui/jquery-ui.js"></script>
-	
-	
+		
 <script>
 $( document ).tooltip({
 	track: true
 });
 </script>
-
-
 
 <!-- <script type="text/javascript" src="assets/jquery-1.11.0.min.js"></script>	 -->
 <link rel="stylesheet" href="style.css"/>
@@ -35,7 +30,6 @@ $( document ).tooltip({
 </script>
 
 
-
 </head>
 <body onload="defaultSettings();">
 
@@ -43,14 +37,11 @@ $( document ).tooltip({
   <div id="errorBox"></div>
 </div>
 
-
 	<div id="header_bar">
 		<div id="logo_top_bar">Department of Computer Science</div>
 	</div>  <!-- end div header_bar -->
 	
-
 	<div id="contentArea">
-		
 		<h1>CS Department Survey</h1>
 		<p>We ask that all prospective students provide feedback about their campus visit<p>
 
@@ -58,23 +49,14 @@ $( document ).tooltip({
 <!-- //http://localhost:8080/AS4_JackYoung_SWE642/Driver?
  -->
 
-<script>
-
+<script type="text/javascript">
 $(function() {
-	
 	$("#f-submit").click(function(){
-		
-		//var val = $('input:checkbox[name=likeMost[]]:checked').val();
-		
 		var checked = []
 		$("input[name='likeMost[]']:checked").each(function ()
 		{
 		    checked.push($(this).val());
 		});
-		
-		
-		//alert(checked);
-		
 		var usn = $("#username").val();
 		var fn = $("#fullName").val();
 		var sa = $("#streetAddress").val();
@@ -92,46 +74,21 @@ $(function() {
 		var rtf = $("#recommendToFriend").val();
 		var ih = $('input:radio[name=interestHow]:checked').val();
 		
-	var dataString = 'username=' + usn + '&fullName=' + fn + '&streetAddress=' + sa + '&zip=' + z + '&state=' + st + '&city=' + c;
-		dataString += '&telephoneNumber=' + t + '&email=' + em + '&url=' + ur + '&surveyDate=' + sd + '&GraduationYear=' + gy;
-		dataString += '&recommendToFriend=' + rtf + '&Data=' + dat + '&studentID=' + sti + '&comments=' + cm + '&interestHow=' + ih;
-		dataString += '&likeMost=' + checked;
-		
-		/* alert(dataString); */
-		
-		/* 		&recommendToFriend=VeryLikely&Data=&studentID=&comments=
-		 */
- 		
-		 //$.post('http://localhost:8080/AS4_JackYoung_SWE642/Driver?' + dataString);
-		
+		var dataString = 'username=' + usn + '&fullName=' + fn + '&streetAddress=' + sa + '&zip=' + z + '&state=' + st + '&city=' + c;
+			dataString += '&telephoneNumber=' + t + '&email=' + em + '&url=' + ur + '&surveyDate=' + sd + '&GraduationYear=' + gy;
+			dataString += '&recommendToFriend=' + rtf + '&Data=' + dat + '&studentID=' + sti + '&comments=' + cm + '&interestHow=' + ih;
+			dataString += '&likeMost=' + checked;
+
 		if (formValidation()) {
-		
-		window.location = 'http://localhost:8080/AS4_JackYoung_SWE642/Driver?' + dataString;
-		
+			//If the form is validates, then send the data to servlet, else display the error
+			// meessage in the UI modal window. 
+			window.location = 'http://localhost:8080/AS4_JackYoung_SWE642/Driver?' + dataString;
 		}
-		
-/* 		 $.ajax({
-			   url: 'http://localhost:8080/AS4_JackYoung_SWE642/Driver?' + dataString,
-	           type:'POST',
-	           success : function(data1){     
-	        	   alert("Success Ajax function");
-			   }
-		});  */
-		
-		
 	});
-	
-	
-	
 });
-
-
 </script>		
 			
 		<!-- <form id="survey_form" action="Driver" autocomplete="on"> -->
-		
-			
-
 		<table id="formTable" border="0">
 			<tr>
 				<td>
@@ -257,19 +214,12 @@ $(function() {
 						<button id="resetForm_button">Reset Form</button>
 					</td>
 				</tr>
-
-		</table>
-		
-			
+		</table>	
 		<!-- </form> -->
-	
 	</div>  <!-- end div contentArea -->
-		
-	
 	<div class="footer">
 		<span class="creatorName">Site Created By: <b>Jack Young</b></span>
 		<a href="http://www.gmu.edu/" title="Please visit http://www.gmu.edu for more information. (Click on the logo to go there now.)"><img id="gmuLogo" width="200px" src="GMU_LOGO.jpg"/></a>
 	</div>
-
 </body>
 </html>

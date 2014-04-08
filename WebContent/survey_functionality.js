@@ -300,6 +300,7 @@ function formValidation() {
  // $(function() {
     $( "#dialog-modal" ).dialog({
       height: 300,
+      width: 600,
       modal: true
     });
   // });
