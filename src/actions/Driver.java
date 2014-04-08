@@ -41,7 +41,6 @@ public class Driver extends HttpServlet {
 	private List<StudentBean> allTakenSurveys;
 	private ServletContext servletContext;
 
-
 	/**
      * @see HttpServlet#HttpServlet()
      */
