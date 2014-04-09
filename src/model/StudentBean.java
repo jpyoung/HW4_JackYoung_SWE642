@@ -8,7 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.persistence.SequenceGenerator;
 /**
  * @author Jack Young
  * @date April 1, 2014
@@ -23,6 +23,10 @@ import javax.persistence.Id;
 @Entity
 public class StudentBean {
 	
+	@Id
+	@SequenceGenerator(name = "STUDENT_HW4_SEQ_SWE642", sequenceName="student_hw4_seq_swe642", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "STUDENT_HW4_SEQ_SWE642")
+	@Column(unique = true, nullable = false, name="S_ID")
 	private int s_id;
 	private String fullName;
 	private String streetAddress;
