@@ -297,6 +297,7 @@ function formValidation() {
 		go = true;
 	}
 
+	
  // $(function() {
 	if (!go) {
     $( "#dialog-modal" ).dialog({
