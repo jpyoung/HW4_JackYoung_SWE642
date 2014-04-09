@@ -21,7 +21,7 @@
 		
 
 		<h4>Username: ${st.username}</h4>
-		<h4>Student ID: ${st.studentId}</h4>
+		<h4>Student ID: ${st.studentID}</h4>
 		<table border="1">
 			<tr>
 				<th>fullName</th>
@@ -41,7 +41,7 @@
 				<td>${st.zip}</td>
 				<td>${st.telephoneNumber}</td>
 				<td>${st.email}</td>
-				<td>${st.dataOfSurvey}</td>
+				<td>${st.dateOfSurvey}</td>
 			</tr>
 		</table>
 		

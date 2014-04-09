@@ -36,7 +36,7 @@ public class StudentBean {
 	private String telephoneNumber;
 	private String email;
 	private String dateOfSurvey;
-	private String[] likedAboutCampus;
+	private String likedAboutCampus;
 	private String originOfInterest;
 	private String likelyhoodOfRecommendation;
 	private String gradMonth;
@@ -92,7 +92,7 @@ public class StudentBean {
 	 */
 	public StudentBean(String fullName, String streetAddress,
 			String city, String state, String zip, String telephoneNumber,
-			String email, String dateOfSurvey, String[] likedAboutCampus,
+			String email, String dateOfSurvey, String likedAboutCampus,
 			String originOfInterest, String likelyhoodOfRecommendation,
 			String gradMonth, String graduationYear, String raffle,
 			String comments, String username, String studentID) {
@@ -248,7 +248,7 @@ public class StudentBean {
 	/**
 	 * @return the likedAboutCampus
 	 */
-	public String[] getLikedAboutCampus() {
+	public String getLikedAboutCampus() {
 		return likedAboutCampus;
 	}
 
@@ -256,7 +256,7 @@ public class StudentBean {
 	/**
 	 * @param likedAboutCampus the likedAboutCampus to set
 	 */
-	public void setLikedAboutCampus(String[] likedAboutCampus) {
+	public void setLikedAboutCampus(String likedAboutCampus) {
 		this.likedAboutCampus = likedAboutCampus;
 	}
 
@@ -398,14 +398,17 @@ public class StudentBean {
 				+ ", streetAddress=" + streetAddress + ", city=" + city
 				+ ", state=" + state + ", zip=" + zip + ", telephoneNumber="
 				+ telephoneNumber + ", email=" + email + ", dateOfSurvey="
-				+ dateOfSurvey + ", likedAboutCampus="
-				+ Arrays.toString(likedAboutCampus) + ", originOfInterest="
-				+ originOfInterest + ", likelyhoodOfRecommendation="
-				+ likelyhoodOfRecommendation + ", gradMonth=" + gradMonth
-				+ ", GraduationYear=" + GraduationYear + ", raffle=" + raffle
-				+ ", comments=" + comments + ", username=" + username
-				+ ", studentID=" + studentID + "]";
+				+ dateOfSurvey + ", likedAboutCampus=" + likedAboutCampus
+				+ ", originOfInterest=" + originOfInterest
+				+ ", likelyhoodOfRecommendation=" + likelyhoodOfRecommendation
+				+ ", gradMonth=" + gradMonth + ", GraduationYear="
+				+ GraduationYear + ", raffle=" + raffle + ", comments="
+				+ comments + ", username=" + username + ", studentID="
+				+ studentID + "]";
 	}
+
+
+
 
 
 	

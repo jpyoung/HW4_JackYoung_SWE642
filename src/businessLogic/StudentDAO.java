@@ -66,8 +66,7 @@ public class StudentDAO {
 		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		    EntityManager em = factory.createEntityManager();
 		    em.getTransaction().begin(); 
-		    Query q = em.createNativeQuery("select studentID from StudentBean", StudentBean.class);
-		    q.setParameter("firstname", "L");
+		    Query q = em.createQuery("select t from StudentBean t");
 		    q.setHint("eclipselink.refresh", "true");
 		    @SuppressWarnings("unchecked")
 			List<StudentBean> s = q.getResultList();

@@ -115,9 +115,16 @@ public class Driver extends HttpServlet {
 			String email = request.getParameter("email");
 			String dataOfSurvey = request.getParameter("surveyDate");
 			String[] likedAboutCampus = request.getParameterValues("likeMost");
+			String lbc = "";
 			if (likedAboutCampus == null) {
-				likedAboutCampus = new String[]{"n/a"};
+				lbc = "n/a";
+			} else {
+				for (int i = 0; i < likedAboutCampus.length; i++) {
+					lbc += likedAboutCampus[i];
+				}
 			}
+			
+			
 			String originOfInterest = request.getParameter("interestHow");
 			String likelyhoodOfRecommendation = request.getParameter("recommendToFriend");
 			String gradMonth = request.getParameter("gradMonth");
@@ -136,7 +143,7 @@ public class Driver extends HttpServlet {
 			
 			studentBean = new StudentBean(full_name, streetAddress, city, state,
 					zip, telephoneNumber, email, dataOfSurvey,
-					likedAboutCampus, originOfInterest,
+					lbc, originOfInterest,
 					likelyhoodOfRecommendation, gradMonth, graduationYear,
 					raffle, comments, username, studentID);
 			
