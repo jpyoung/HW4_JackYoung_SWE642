@@ -410,9 +410,26 @@ function addressCheck() {
 //this function will be used to reset the form
 function resetForm() {
 	alert("Reset Button was pressed, all form contents have been cleared.");
-	document.getElementById("survey_form").reset();
-	document.getElementById("json_city").innerHTML = "";
-	document.getElementById("json_state").innerHTML = "";
+	//document.getElementById("survey_form").reset();
+	//document.getElementById("json_city").innerHTML = "";
+	//document.getElementById("json_state").innerHTML = "";
+	$("#username").val("");
+	$("#fullName").val("");
+	$("#streetAddress").val("");
+	$("#zip").val("");
+	$("#state").val("");
+	$("#city").val("");
+	$("#telephoneNumber").val("");
+	$("#email").val("");
+	$("#url").val("");
+	$("#surveyDate").val("");
+	$("#gradMonth").val("");
+	$("#GraduationYear").val("");
+	$("#studentID").val("");
+	$("#Data").val("");
+	$("#comments").val("");
+	$("#recommendToFriend").val("");
+	
 }
 
 function registerResetFormHandler() {
