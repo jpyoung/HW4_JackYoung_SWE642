@@ -2,7 +2,6 @@ package actions;
 
 import java.io.IOException;
 import java.util.List;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -10,9 +9,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.tomcat.jni.File;
-
 import businessLogic.DataProcessor;
 import businessLogic.StudentDAO;
 import model.DataBean;
@@ -134,13 +130,6 @@ public class Driver extends HttpServlet {
 			String username = request.getParameter("username");
 			String studentID = request.getParameter("studentID");
 
-
-			//where null is is where the likedAboutCampus will go
-//			studentBean = new StudentBean(full_name, streetAddress, city, state,
-//					zip, telephoneNumber, email, dataOfSurvey, likedAboutCampus,
-//					originOfInterest, likelyhoodOfRecommendation, raffle, comments,
-//					username, studentId);
-			
 			studentBean = new StudentBean(full_name, streetAddress, city, state,
 					zip, telephoneNumber, email, dataOfSurvey,
 					lbc, originOfInterest,

@@ -45,6 +45,7 @@
 				<th>telephone</th>
 				<th>email</th>
 				<th>dateOfSurvey</th>
+				<th>Grad Month/Year</th>
 			</tr>
 			<tr>
 				<td>${st.fullName}</td>
@@ -55,6 +56,7 @@
 				<td>${st.telephoneNumber}</td>
 				<td>${st.email}</td>
 				<td>${st.dateOfSurvey}</td>
+				<td>${st.gradMonth}</td>
 			</tr>
 		</table>
 		

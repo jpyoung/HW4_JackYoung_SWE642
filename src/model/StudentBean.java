@@ -315,7 +315,7 @@ public class StudentBean {
 	 * @return the gradMonth
 	 */
 	public String getGradMonth() {
-		return gradMonth;
+		return gradMonth + " " + getGraduationYear();
 	}
 
 
