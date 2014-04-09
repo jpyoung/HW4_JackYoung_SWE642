@@ -14,8 +14,21 @@
 
 	</div>  <!-- end div header_bar -->
 	
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-		<div id="contentArea">
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+	<div id="wrapper">
+		<div id="leftPanel">
+			<h4>All StudentIDs</h4>
+			<ul>	
+<c:forEach var="option" items="${idList}" >
+  <li><a href="Driver?uid=${option}"><c:out value="${option}"/></a></li>
+</c:forEach>
+			</ul>
+		</div>
+		
+		<div id="contentArea2">
+		<div id="b_container">		
 		
 			<h1>Student Information Page</h1>
 		
@@ -72,8 +85,9 @@
 	<br/>
 
 		<a href="index.jsp">Return to Survey Form.</a>
-		</div>  <!-- end div contentArea -->
-
+			</div>  <!-- end div b_container -->
+		</div>  <!-- end div contentArea2 -->
+</div> <!-- end div wrapper -->	
 
 	<div class="footer">
 		<span class="creatorName">Site Created By: <b>Jack Young</b></span>

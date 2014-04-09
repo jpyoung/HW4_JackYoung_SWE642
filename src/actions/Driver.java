@@ -90,11 +90,11 @@ public class Driver extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("[INFO] :=:  doGet() method called in the Driver Servlet Class. :=: UID=" + request.getParameter("uid"));
-		//System.out.println("[Text File Location] :=: " + request.getServletContext().getRealPath("SurveyData_JackYoung.txt"));
+		System.out.println("[Text File Location] :=: " + request.getServletContext().getRealPath("SurveyData_JackYoung.txt"));
 		
 		//looking up the relative location of the textfile.  
-		//StudentDAO.FILENAME = request.getServletContext().getRealPath("SurveyData_JackYoung.txt");
-		
+		StudentDAO.FILENAME = request.getServletContext().getRealPath("SurveyData_JackYoung.txt");
+		System.out.println("IDS: " + StudentDAO.readIn());
 		//reading in all data from text file
 		//allTakenSurveys = StudentDAO.readIn();
 		allTakenSurveys = StudentDAO.retrieveAllSurveys();
@@ -151,7 +151,7 @@ public class Driver extends HttpServlet {
 			System.out.println("[NEW SURVEY] :=: " + studentBean.toString());
 
 			//writing out the new student survey
-			//StudentDAO.writeOut(studentBean);
+			StudentDAO.writeOutID(studentID);
 			
 			boolean succInsert = StudentDAO.insertStudentSurveyRecord(studentBean);
 			if (succInsert) {
@@ -186,6 +186,10 @@ public class Driver extends HttpServlet {
 			//if (request.getParameter("uid") != null)
 			System.out.println("ELSE IF");
 
+			//gathering all the IDs of the students
+			List<String> allIDS = StudentDAO.gatherIDs();
+			request.setAttribute("idList", allIDS);
+			
 			String address;
 
 			StudentBean selectedStudent = findStudent(request.getParameter("uid"));

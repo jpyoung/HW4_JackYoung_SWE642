@@ -282,6 +282,10 @@ function formValidation() {
 		document.getElementById("streetAddress").value = "";	
 	}
 	
+	if (!verifyUniqueStudentID()) {
+		ERROR_MESSAGES[ERROR_MESSAGES.length] = "Error, The entered StudentID already exist. Please try again";
+	}
+	
 	var go = false;
 	
 	if (ERROR_MESSAGES.length > 0) {
@@ -310,6 +314,35 @@ function formValidation() {
 
     return go;
 }
+
+
+//Function is used to check the entered student ID agaisnt existing IDs,
+//which are stored in a text file.  If it finds a match, returns false.
+//if it doesnt find a match it returns true.  
+function verifyUniqueStudentID() {
+	//http://localhost:8080/AS4_JackYoung_SWE642/SurveyData_JackYoung.txt
+	var enteredID = $("#studentID").val();
+	var result = true;
+    $.ajax({
+        url: "http://localhost:8080/AS4_JackYoung_SWE642/SurveyData_JackYoung.txt",
+        async: false,
+        success: function (data){
+           var lines = data.split('\n');
+           console.log("Length: " + lines.length);
+           if ( lines.length > 0 ) {
+        	   for (var x = 0; x < lines.length; x++) {
+        		   console.log(lines[x]);
+        		   if ( enteredID == lines[x]) {
+        			   console.log("Found a matching studentID");
+        			   result = false;
+        		   }
+        	   }
+           }
+        }
+    });
+    return result;
+}
+
 
 // function is used to make sure at least two of the 
 // checkboxes are checked.  If so return true, else

@@ -87,6 +87,9 @@ $(function() {
 		}
 	});
 });
+
+/* verifyUniqueStudentID(); */
+
 </script>		
 			
 		<!-- <form id="survey_form" action="Driver" autocomplete="on"> -->
