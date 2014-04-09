@@ -1,6 +1,13 @@
 package model;
 
 import java.util.Arrays;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  * @author Jack Young
@@ -12,6 +19,8 @@ import java.util.Arrays;
  * the student survey form.  
  * 
  */
+
+@Entity
 public class StudentBean {
 	
 	private int s_id;
