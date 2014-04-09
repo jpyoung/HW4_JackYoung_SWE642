@@ -36,12 +36,12 @@ public class StudentDAO {
 	private static final String PERSISTENCE_UNIT_NAME = "studentbeanss";
 	private static EntityManagerFactory factory;
 
-	  public List<StudentBean> retrieveAllSurveys() {
+	  public static List<StudentBean> retrieveAllSurveys() {
 		  System.out.println("[INFO] - Method Called :=: retrieveAllSurveys");
 		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		    EntityManager em = factory.createEntityManager();
 		    em.getTransaction().begin(); 
-		    Query q = em.createQuery("select t from Student t");
+		    Query q = em.createQuery("select t from StudentBean t");
 		    q.setHint("eclipselink.refresh", "true");
 		    @SuppressWarnings("unchecked")
 			List<StudentBean> s = q.getResultList();
@@ -50,7 +50,7 @@ public class StudentDAO {
 	  }
 
 
-	  public boolean insertStudentSurveyRecord(StudentBean newStudent) {
+	  public static boolean insertStudentSurveyRecord(StudentBean newStudent) {
 		  	System.out.println("[INFO] - Method Called :=: insertStudentSurveyRecord");
 		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 		    EntityManager em = factory.createEntityManager();
@@ -61,8 +61,30 @@ public class StudentDAO {
 		    return true;
 	  }
 	
+	  public static List<String> gatherIDs() {
+		  System.out.println("[INFO] - Method Called :=: gatherIDs");
+		    factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+		    EntityManager em = factory.createEntityManager();
+		    em.getTransaction().begin(); 
+		    Query q = em.createNativeQuery("select studentID from StudentBean", StudentBean.class);
+		    q.setParameter("firstname", "L");
+		    q.setHint("eclipselink.refresh", "true");
+		    @SuppressWarnings("unchecked")
+			List<StudentBean> s = q.getResultList();
+		    em.close();
+		    
+			List<String> temp = new ArrayList<String>();
+			if (s.size() > 0) {
+			for (int i = 0; i < s.size(); i++) {
+				temp.add(s.get(i).getStudentID());
+			}
+			}
+			return temp;
+	  }
 	
-	
+
+	  
+	  
 //	public static String FILENAME;
 //		
 //	/**

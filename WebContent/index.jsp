@@ -67,6 +67,7 @@ $(function() {
 		var em = $("#email").val();
 		var ur = $("#url").val();
 		var sd = $("#surveyDate").val();
+		var grm = $("#gradMonth").val();
 		var gy = $("#GraduationYear").val();
 		var sti = $("#studentID").val();
 		var dat = $("#Data").val();
@@ -75,7 +76,7 @@ $(function() {
 		var ih = $('input:radio[name=interestHow]:checked').val();
 		
 		var dataString = 'username=' + usn + '&fullName=' + fn + '&streetAddress=' + sa + '&zip=' + z + '&state=' + st + '&city=' + c;
-			dataString += '&telephoneNumber=' + t + '&email=' + em + '&url=' + ur + '&surveyDate=' + sd + '&GraduationYear=' + gy;
+			dataString += '&telephoneNumber=' + t + '&email=' + em + '&url=' + ur + '&surveyDate=' + sd + '&gradMonth=' + grm + '&GraduationYear=' + gy;
 			dataString += '&recommendToFriend=' + rtf + '&Data=' + dat + '&studentID=' + sti + '&comments=' + cm + '&interestHow=' + ih;
 			dataString += '&likeMost=' + checked;
 

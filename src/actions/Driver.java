@@ -63,7 +63,7 @@ public class Driver extends HttpServlet {
 			if (getAllTakenSurveys().size() > 0) {
 				int index = -1;
 				for (int i = 0; i < allTakenSurveys.size(); i++) {
-					if (allTakenSurveys.get(i).getStudentId().equalsIgnoreCase(id)) {
+					if (allTakenSurveys.get(i).getStudentID().equalsIgnoreCase(id)) {
 						index = i;
 					}
 				}
@@ -90,13 +90,14 @@ public class Driver extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		System.out.println("[INFO] :=:  doGet() method called in the Driver Servlet Class. :=: UID=" + request.getParameter("uid"));
-		System.out.println("[Text File Location] :=: " + request.getServletContext().getRealPath("SurveyData_JackYoung.txt"));
+		//System.out.println("[Text File Location] :=: " + request.getServletContext().getRealPath("SurveyData_JackYoung.txt"));
 		
 		//looking up the relative location of the textfile.  
-		StudentDAO.FILENAME = request.getServletContext().getRealPath("SurveyData_JackYoung.txt");
+		//StudentDAO.FILENAME = request.getServletContext().getRealPath("SurveyData_JackYoung.txt");
 		
 		//reading in all data from text file
-		allTakenSurveys = StudentDAO.readIn();
+		//allTakenSurveys = StudentDAO.readIn();
+		allTakenSurveys = StudentDAO.retrieveAllSurveys();
 		
 		System.out.println("[Info] :=: All the Taken Surveys: " + allTakenSurveys);
 		
@@ -119,22 +120,38 @@ public class Driver extends HttpServlet {
 			}
 			String originOfInterest = request.getParameter("interestHow");
 			String likelyhoodOfRecommendation = request.getParameter("recommendToFriend");
+			String gradMonth = request.getParameter("gradMonth");
+			String graduationYear = request.getParameter("GraduationYear");
 			String raffle = request.getParameter("Data");
 			String comments = request.getParameter("comments");
 			String username = request.getParameter("username");
-			String studentId = request.getParameter("studentID");
+			String studentID = request.getParameter("studentID");
 
 
 			//where null is is where the likedAboutCampus will go
+//			studentBean = new StudentBean(full_name, streetAddress, city, state,
+//					zip, telephoneNumber, email, dataOfSurvey, likedAboutCampus,
+//					originOfInterest, likelyhoodOfRecommendation, raffle, comments,
+//					username, studentId);
+			
 			studentBean = new StudentBean(full_name, streetAddress, city, state,
-					zip, telephoneNumber, email, dataOfSurvey, likedAboutCampus,
-					originOfInterest, likelyhoodOfRecommendation, raffle, comments,
-					username, studentId);
+					zip, telephoneNumber, email, dataOfSurvey,
+					likedAboutCampus, originOfInterest,
+					likelyhoodOfRecommendation, gradMonth, graduationYear,
+					raffle, comments, username, studentID);
+			
 
 			System.out.println("[NEW SURVEY] :=: " + studentBean.toString());
 
 			//writing out the new student survey
-			StudentDAO.writeOut(studentBean);
+			//StudentDAO.writeOut(studentBean);
+			
+			boolean succInsert = StudentDAO.insertStudentSurveyRecord(studentBean);
+			if (succInsert) {
+				System.out.println("[INFO] Student Survey was successfully inserted into the Database");
+			} else {
+				System.out.println("[ERROR] The Student Survey was not successfully inserted into the Database.");
+			}
 
 			//Calculating the Mean and STDV and setting the databean
 			dataBean = DataProcessor.computeMetrics(studentBean.getRaffle());
