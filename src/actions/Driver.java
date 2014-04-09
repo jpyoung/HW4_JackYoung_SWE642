@@ -189,7 +189,7 @@ public class Driver extends HttpServlet {
 			String address;
 
 			StudentBean selectedStudent = findStudent(request.getParameter("uid"));
-
+			System.out.println("Selected Student: " + selectedStudent);
 			if (selectedStudent == null) {
 				System.out.println("[ERROR] :=: Going to the error student page.");
 				address = NOSUCHSTUDENT_JSP;
